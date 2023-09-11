@@ -11,6 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
       // console.log(timeResponse);
       console.log("httpLbdClient", httpLbdClient);
       setLbdApiClient(httpLbdClient);
+      await httpLbdClient.time();
     })();
   }, []);
   return <Component {...pageProps} />

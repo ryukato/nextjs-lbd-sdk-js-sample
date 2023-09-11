@@ -2,10 +2,23 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import { HttpClient } from '@line/lbd-sdk-js'
+import httpLbdClient from './api/lbdApi'
+import { useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [lbdApiClient, setLbdApiClient] = useState<HttpClient>();
+  useEffect(() => {
+    (async () => {
+      // const timeResponse = await httpLbdClient.time();
+      // console.log(timeResponse);
+      console.log("httpLbdClient", httpLbdClient);
+      setLbdApiClient(httpLbdClient);
+      await httpLbdClient.time();
+    })();
+  }, []);
   return (
     <>
       <Head>
